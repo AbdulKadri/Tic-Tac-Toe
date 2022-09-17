@@ -6,9 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e787344f18.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <div id="grid">
+        <div id="header">
+            <h1 id="title" >Tic Tac Toe</h1>
+        </div>
+
+        <div id="gameBoard">
+            <div>X</div>
+            <div>O</div>
+            <div>X</div>
+            <div>O</div>
+            <div>X</div>
+            <div>O</div>
+            <div>X</div>
+            <div>O</div>
+            <div>X</div>
+        </div>
+
+        <div id="footerOutline">
+            <div id="footerGrid">
+                <div id="playerOneContainer">
+                    <p id="playerOne">Player 1 (X)</p>
+                    <p id="playerOneScore">0</p>
+                </div>
+
+                <div id="tieContainer">
+                    <p id="tie">Tie</p>
+                    <p id="tieScore">0</p>
+                </div>
+
+                <div id="playerTwoContainer">
+                    <p id="playerTwo">Player 2 (O)</p>
+                    <p id="playerTwoScore">0</p>
+                </div>
+
+                <div id="resetContainer">
+                    <button type="button" id="reset"> reset </button>
+                </div>
     
+                <div id="difficulty">
+                    <button type="button" id="easy">Easy</button>
+                    <button type="button" id="medium">Medium</button>
+                    <button type="button" id="hard">Hard</button>
+                </div>
+
+                <div id="twoPlayerIcon">
+                    <i class="fa-solid fa-user-group"></i>
+                    <p>2p</p>
+                </div>
+
+                <div id="computerIcon">
+                    <i class="fa-solid fa-robot"></i>
+                    <p>AI</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
 </body>
-<script src="./script.js"></script>
 </html>
