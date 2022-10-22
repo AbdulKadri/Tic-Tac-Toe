@@ -1,33 +1,59 @@
 const gameBoardModule = (() => {
+    //set variables
     let gameboard = [];
-    return { gameboard };
+
+    // Cache DOM
+    const sectionItems = document.getElementsByClassName("sections")
+    const resetButton = document.getElementById("reset")
+        
+    // Bind events
+    const clearBoard = () => {
+        for (i = 0; i < 9; i++) {
+            gameboard[i].textContent = ''
+        }
+    }
+
+    for (i = 0; i < sectionItems.length; i++) {
+        gameboard[i] = sectionItems[i]
+    };
+
+    resetButton.addEventListener("click", clearBoard);
+    
+    return {
+        clearBoard: clearBoard
+    };
 })();
 
 const displayControllerModule = (() => {
-    let testF = () => { console.log("Hello this is a test") };
-    return { testF };
+    // set variables
+    // const humanPlayerOne = PlayerFactory('X');
+    // const humanPlayerTwo = PlayerFactory('O');
+
+    // cache DOM
+    const boardPieces = document.querySelectorAll('.sections');
+    const fillboardPiece = (e) => {
+        e.textContent = "X"
+    }
+    console.log(boardPieces)
+    boardPieces.forEach(boardPiece => 
+        // console.log(boardPiece)
+        boardPiece.addEventListener('click', console.log("Hello"))
+    )
+    
+    //bind events
 })();
 
-const PlayerFactory = (playerName, playerNumber, playerLetter) => {
-    const getPlayerName = () => {
-        playerName;
-        console.log(`${playerName}`)
-    }
-    const getPlayerNumber = () => {
-        playerNumber;
-        console.log(`${playerNumber}`)
-    }
-    const getPlayerLetter = () => {
-        playerLetter;
-        console.log(`${playerLetter}`)
-    }
+const PlayerFactory = (playerSign) => {
+    // const getPlayerSign = () => playerSign
 
-    return {getPlayerName, getPlayerNumber, getPlayerLetter}
+    // const getPlayerNumber = () => {
+    //     playerNumber;
+    //     console.log(`${playerNumber}`)
+    // }
+    // const getPlayerLetter = () => {
+    //     playerLetter;
+    //     console.log(`${playerLetter}`)
+    // }
+
+    return {}
 }
-
-displayControllerModule.testF();
-const player1 = PlayerFactory("Bob", 1, "X");
-const player2 = PlayerFactory("Rob", 2, "O");
-player1.getPlayerName()
-player1.getPlayerNumber()
-player2.getPlayerLetter()
