@@ -3,16 +3,10 @@
     src: url(./fonts/Oswald-VariableFont_wght.ttf);
 }
 
-:root, 
-    :root.light {
-        --light-bg-color: white;
-        --light-text-color:  black;
-    }
-
-    :root.dark {
-        --dark-bg-color: black;
-        --dark-text-color: white;
-    }
+:root {
+    --bg-color: black;
+    --text-color: white;
+}
 
 *,
 *::before,
@@ -37,9 +31,9 @@ body {
 }
 
 #header {
-    width: 50rem;
-    height: 8rem;
-    margin-top: 3rem;
+    width: 50vw;
+    height: 20vh;
+    margin-top: 1%;
 
     display: flex;
     justify-content: center;
@@ -55,8 +49,9 @@ body {
 }
 
 #gameBoard {
-    border: 1px solid black;
-    height: 28rem;
+    border: 3px solid rebeccapurple;
+    height: 50vh;
+    width: 50vw;
     background: lightgray;
     /* border: 5px solid rebeccapurple; */
 
@@ -70,7 +65,7 @@ body {
 #gameBoard > div {
     width: 100%;
     height: 100%;
-    border: 3px solid black;
+    border: 3px solid rebeccapurple;
     font-size: 5rem;
 
     display: grid;
@@ -83,9 +78,9 @@ body {
 }
 
 #footerOutline {
-    width: 50rem;
-    height: 8rem;
-    margin-bottom: 3rem;
+    width: 50vw;
+    height: 20vh;
+    margin-bottom: 1%;
 
     border-radius: 0 0 50% 50%;
     background: lightgray;
