@@ -1,6 +1,11 @@
 const gameBoardModule = (() => {
     //set variables
-    let gameboard = [];
+    let gameboard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    player1 = "X"
+    player2 = "O"
+    currentPlayer = "X"
+    gameOver = false
+    console.log(gameOver)
 
     // Cache DOM
     const sectionItems = document.getElementsByClassName("sections")
