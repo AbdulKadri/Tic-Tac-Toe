@@ -182,7 +182,7 @@ body {
     pointer-events: auto;
 }
 
-.start-Popup {
+#start-Popup {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -200,7 +200,7 @@ body {
     background-color: rebeccapurple;
 }
 
-.start-Button {
+#start-Button {
     width: 50%;
     height: 20%;
     border-radius: 5%;
@@ -209,6 +209,10 @@ body {
     font-size: 3rem;
 }
 
-.start-Button:hover {
+#start-Button:hover {
     cursor: pointer;
+}
+
+.hide {
+    visibility: hidden;
 }
