@@ -59,11 +59,15 @@ const gameboardModule = (() => {
 
     const gameCheck = (info) => {
         if (checkWinner(info, info.currentPlayer)) {
-            // let playerOneScore = document.getElementById('playerOneScore')
-            // let playerTwoScore = document.getElementById('playerTwoScore')
-            // playerOneScore++
+            let playerOneScore = document.getElementById('playerOneScore')
+            let playerTwoScore = document.getElementById('playerTwoScore')
+            let player = info.currentPlayer === "X" ? playerOneScore : playerTwoScore
+            changeScore(player)
+            playerOneScore++
             return true
         } else if (info.round > 8) {
+            let tieScore = document.getElementById('tieScore')
+            changeScore(tieScore)
             info.gameOver = true
             return true
         } else {
@@ -86,5 +90,9 @@ const gameboardModule = (() => {
 
     const changePlayer = (info) => {
         info.currentPlayer = info.currentPlayer == "X" ? "O" : "X"
+    }
+
+    const changeScore = (player) => {
+        player.textContent += 1
     }
 })();
