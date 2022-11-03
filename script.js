@@ -60,19 +60,26 @@ const gameboardModule = (() => {
             return
         }
 
+        changePlayer(info)
+
         console.log(section, info)
     }
 
     const gameCheck = (info) => {
-        if (checkWinner(info)) {
+        if (checkWinner(info, info.currentPlayer)) {
+            // let playerOneScore = document.getElementById('playerOneScore')
+            // let playerTwoScore = document.getElementById('playerTwoScore')
+            // playerOneScore++
             return true
         } else if (info.round > 8) {
+            info.gameOver = true
             return true
         } else {
             return false
         }
 
     }
+
     const checkWinner = (info) => {
         let result = false
         winCondition.forEach(condition => {
@@ -83,5 +90,9 @@ const gameboardModule = (() => {
         })
     
         return result
+    }
+
+    const changePlayer = (info) => {
+        info.currentPlayer = info.currentPlayer == "X" ? "O" : "X"
     }
 })();
