@@ -25,7 +25,7 @@ const gameboardModule = (() => {
             currentPlayer: "X",
             gameOver: false
         }
-        startGame(info)
+        addEventListenersToGameBoard(info)
     })
 
     const addEventListenersToGameBoard = (info) => {
@@ -35,12 +35,6 @@ const gameboardModule = (() => {
                 useMove(e.target, info)
             })
         })
-    }
-
-    const startGame = (info) => {
-        addEventListenersToGameBoard(info)
-
-        console.log(info)
     }
 
     const useMove = (section, info) => {
@@ -61,8 +55,6 @@ const gameboardModule = (() => {
         }
 
         changePlayer(info)
-
-        console.log(section, info)
     }
 
     const gameCheck = (info) => {
