@@ -116,6 +116,13 @@ body {
     margin-top: 5px;
 }
 
+#rematch {
+    width: 100%;
+    background-color: lightgreen;
+    cursor: pointer;
+    height: 100%;
+}
+
 #reset {
     width: 100%;
     background: red;
