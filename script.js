@@ -1,5 +1,16 @@
 const gameboardModule = (() => {
 
+    const winCondition = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ]
+
     const popUp = document.getElementById('start-Button')
     popUp.addEventListener('click', (e) => {
         e.preventDefault()
@@ -17,18 +28,6 @@ const gameboardModule = (() => {
         startGame(info)
     })
 
-    // const setUpGame = (info) => {
-    //     info = {}
-    //     info.gameboard = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    //     info.player1 = "X"
-    //     info.player2 = "O"
-    //     info.round = 0
-    //     info.currentPlayer = "X"
-    //     info.gameOver = false
-
-    //     return(info)
-    // }
-
     const addEventListenersToGameBoard = (info) => {
         const sections = document.querySelectorAll(".sections")
         sections.forEach(section => {
@@ -39,8 +38,6 @@ const gameboardModule = (() => {
     }
 
     const startGame = (info) => {
-        // setUpGame(info)
-
         addEventListenersToGameBoard(info)
 
         console.log(info)
@@ -59,6 +56,32 @@ const gameboardModule = (() => {
         section.textContent = info.currentPlayer
         info.round++
 
+        if (gameCheck(info)) {
+            return
+        }
+
         console.log(section, info)
+    }
+
+    const gameCheck = (info) => {
+        if (checkWinner(info)) {
+            return true
+        } else if (info.round > 8) {
+            return true
+        } else {
+            return false
+        }
+
+    }
+    const checkWinner = (info) => {
+        let result = false
+        winCondition.forEach(condition => {
+            if (info.gameboard[condition[0]] === info.gameboard[condition[1]] && info.gameboard[condition[1]] === info.gameboard[condition[2]]) {
+                info.gameOver = true
+                result = true
+            }
+        })
+    
+        return result
     }
 })();
