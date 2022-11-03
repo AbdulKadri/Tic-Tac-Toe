@@ -181,3 +181,34 @@ body {
     opacity: 1;
     pointer-events: auto;
 }
+
+.start-Popup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 50vh;
+    width: 50vw;
+    margin-left: -25vw;
+    margin-top: -25vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 5rem;
+    background-color: rebeccapurple;
+}
+
+.start-Button {
+    width: 50%;
+    height: 20%;
+    border-radius: 5%;
+    outline: none;
+    background-color: green;
+    font-size: 3rem;
+}
+
+.start-Button:hover {
+    cursor: pointer;
+}
