@@ -11,22 +11,34 @@ const gameboardModule = (() => {
         [2, 4, 6]
     ]
 
-    const popUp = document.getElementById('start-Button')
-    popUp.addEventListener('click', (e) => {
+    const form = document.getElementById('myForm')
+    form.addEventListener('submit', (e) => {
         e.preventDefault()
 
-        document.getElementById('start-Popup').classList.add('hide')
-        
-        let info = {
-            gameboard: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-            player1: "X",
-            player2: "O",
-            round: 0,
-            currentPlayer: "X",
-            gameOver: false
-        }
-        addEventListenersToGameBoard(info)
+        const formData = new FormData(form)
+        const data = Object.fromEntries(formData)
+        console.log(data)
+        startGame(data)
     })
+
+    // const initializeGame = (data) => {
+    //     data.choice = +data.choice
+    // }
+
+    const popUp = document.getElementById('start-Button')
+    popUp.addEventListener('click', () => {
+        document.getElementById('start-Popup').classList.add('hide')
+    })
+
+    const setUpGame = (info) => {
+        info.choice = +info.choice
+        info.gameboard = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        info.player1 = "X"
+        info.player2 = "O"
+        info.round = 0
+        info.currentPlayer = "X"
+        info.gameOver = false
+    }
 
     const addEventListenersToGameBoard = (info) => {
         const sections = document.querySelectorAll(".sections")
@@ -35,6 +47,11 @@ const gameboardModule = (() => {
                 useMove(e.target, info)
             })
         })
+    }
+
+    const startGame = (info) => {
+        setUpGame(info)
+        addEventListenersToGameBoard(info)
     }
 
     const useMove = (section, info) => {
@@ -54,7 +71,11 @@ const gameboardModule = (() => {
             return
         }
 
-        changePlayer(info)
+        if (info.choice === 0) {
+            changePlayer(info)
+        } else if (data.choice === 1) {
+            return
+        }
     }
 
     const gameCheck = (info) => {

@@ -209,11 +209,12 @@ body {
 
 #start-Button {
     width: 50%;
-    height: 20%;
+    height: 100%;
     border-radius: 5%;
     outline: none;
     background-color: green;
     font-size: 3rem;
+    align-self: center;
 }
 
 #start-Button:hover {
@@ -222,4 +223,18 @@ body {
 
 .hide {
     visibility: hidden;
+}
+
+#myForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#options {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(30px, auto));
+    font-size: 2rem;
+    gap: 5px;
+    margin: 5%;
 }

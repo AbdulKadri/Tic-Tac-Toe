@@ -64,14 +64,26 @@
                     <i class="fa-solid fa-robot"></i>
                     <p>AI</p>
                 </div>
-            </div>
+            </div>     
+            
+        </div>
+        
+        <div id="start-Popup">
+            <u> Start Game </u>
+            <form id="myForm">
+                <div id="options">
+                    <input type="radio" name="choice" id="PvP" value="0" checked>
+                    <label for="PvP">Player vs Player</label>
 
-            <div id="start-Popup">
-                Start Game
-                <button type="button" id="start-Button">Okay!</button>
-            </div>
+                    <input type="radio" name="choice" id="PvEasy" value="1">
+                    <label for="PvEasy">Player Vs Computer (Easy)</label>
 
+                    <input type="radio" name="choice" id="PvHard" value="2">
+                    <label for="PvHard">Player Vs Computer (Hard)</label>
+                </div>
 
+                <button type="submit" name="submit" value="submit" id="start-Button">Okay!</button>
+            </form>
         </div>
     </div>
 </body>
