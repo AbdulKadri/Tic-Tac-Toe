@@ -17,13 +17,8 @@ const gameboardModule = (() => {
 
         const formData = new FormData(form)
         const data = Object.fromEntries(formData)
-        console.log(data)
         startGame(data)
     })
-
-    // const initializeGame = (data) => {
-    //     data.choice = +data.choice
-    // }
 
     const popUp = document.getElementById('start-Button')
     popUp.addEventListener('click', () => {
@@ -73,7 +68,9 @@ const gameboardModule = (() => {
 
         if (info.choice === 0) {
             changePlayer(info)
-        } else if (data.choice === 1) {
+        } else if (info.choice === 1) {
+            computerEasy(info)
+            info.currentPlayer = "X"
             return
         }
     }
@@ -83,8 +80,8 @@ const gameboardModule = (() => {
             let playerOneScore = document.getElementById('playerOneScore')
             let playerTwoScore = document.getElementById('playerTwoScore')
             let player = info.currentPlayer === "X" ? playerOneScore : playerTwoScore
+            console.log(player)
             changeScore(player)
-            playerOneScore++
             return true
         } else if (info.round > 8) {
             let tieScore = document.getElementById('tieScore')
@@ -115,5 +112,27 @@ const gameboardModule = (() => {
 
     const changeScore = (player) => {
         player.textContent += 1
+    }
+
+    const computerEasy = (info) => {
+        changePlayer(info)
+
+        info.round++
+        let availableSpace = info.gameboard.filter(
+            (space) => space !== "X" && space !== "O")
+            
+        let playMove = availableSpace[Math.floor(Math.random() * availableSpace.length)];
+        info.gameboard[playMove] = info.player2
+        
+        setTimeout(() => {
+            let section = document.getElementById(`${playMove}`)
+            section.textContent = info.player2
+            section.classList.add('player2')
+        }, 250)
+
+        if (gameCheck(info)) {
+            return
+        }
+        changePlayer(info)
     }
 })();
