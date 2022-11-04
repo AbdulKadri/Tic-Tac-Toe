@@ -133,31 +133,6 @@ body {
     transform: scale(1.01);
 }
 
-#switchToAI {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-#twoPlayerIcon,
-#computerIcon {
-    position: absolute;
-    top: 5%;
-    right: 1%;
-    opacity: 0;
-    pointer-events: none;
-}
-
-#twoPlayerIcon:hover,
-#computerIcon:hover {
-    color: white;
-    cursor: pointer;
-}
-
-#currentOpponent {
-    opacity: 1;
-    pointer-events: auto;
-}
-
 #start-Popup {
     position: absolute;
     left: 50%;
