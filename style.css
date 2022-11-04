@@ -133,40 +133,9 @@ body {
     transform: scale(1.01);
 }
 
-#difficulty {
-    width: 70%;
-    margin-top: 5px;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-#difficulty > button {
-    width: 33%;
-    border-radius: 20%;
-    opacity: 0;
-    pointer-events: none;
-}
-
 #switchToAI {
     opacity: 1;
     pointer-events: auto;
-}
-
-#difficulty > button:hover {
-    transform: scale(1.1);
-}
-
-#easy:hover {
-    background: lightgreen;
-}
-
-#medium:hover {
-    background: yellow;
-}
-
-#hard:hover {
-    background: lightcoral;
 }
 
 #twoPlayerIcon,
