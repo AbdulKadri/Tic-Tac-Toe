@@ -11,6 +11,13 @@ const gameboardModule = (() => {
         [2, 4, 6]
     ]
 
+    const resetGameBtn = document.getElementById('reset')
+    const rematchGameBtn = document.getElementById('rematch')
+
+    resetGameBtn.addEventListener('click', () => {
+        location.reload()
+    })
+
     const form = document.getElementById('myForm')
     form.addEventListener('submit', (e) => {
         e.preventDefault()
@@ -40,6 +47,13 @@ const gameboardModule = (() => {
         sections.forEach(section => {
             section.addEventListener('click', (e) => {
                 useMove(e.target, info)
+            })
+        })
+        rematchGameBtn.addEventListener('click', (e) => {
+            setUpGame(info)
+            sections.forEach(section => {
+                section.className = "section"
+                section.textContent = ""
             })
         })
     }
@@ -120,7 +134,7 @@ const gameboardModule = (() => {
     }
 
     const changeScore = (player) => {
-        player.textContent += 1
+        player.textContent = parseInt(player.textContent) + 1
     }
 
     const computerEasy = (info) => {
