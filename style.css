@@ -186,8 +186,13 @@ body {
 @media (max-width: 900px) {
     #header,
     #gameBoard,
-    #footerOutline {
+    #footerOutline,
+    #start-Popup {
         width: 100vw
+    }
+
+    #start-Popup {
+        margin-left: -50vw;
     }
 }
 
