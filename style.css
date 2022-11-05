@@ -182,3 +182,19 @@ body {
     gap: 5px;
     margin: 5%;
 }
+
+@media (max-width: 900px) {
+    #header,
+    #gameBoard,
+    #footerOutline {
+        width: 100vw
+    }
+}
+
+@media (max-height: 500px) {
+    #header,
+    #gameBoard,
+    #footerOutline {
+        height: 100vh;
+    }
+}
