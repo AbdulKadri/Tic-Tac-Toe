@@ -72,6 +72,13 @@ const gameboardModule = (() => {
             computerEasy(info)
             info.currentPlayer = "X"
             return
+        } else if (info.choice === 2) {
+            changePlayer(info)
+            computerHard(info)
+            if (gameCheck((info))) {
+                return
+            }
+            changePlayer(info)
         }
     }
 
@@ -94,11 +101,13 @@ const gameboardModule = (() => {
 
     }
 
-    const checkWinner = (info) => {
+    const checkWinner = (info, player) => {
         let result = false
         winCondition.forEach(condition => {
-            if (info.gameboard[condition[0]] === info.gameboard[condition[1]] && info.gameboard[condition[1]] === info.gameboard[condition[2]]) {
-                info.gameOver = true
+            if (info.gameboard[condition[0]] === player &&
+                info.gameboard[condition[1]] === player &&
+                info.gameboard[condition[2]] === player
+            ) {
                 result = true
             }
         })
@@ -134,5 +143,64 @@ const gameboardModule = (() => {
             return
         }
         changePlayer(info)
+    }
+
+    const computerHard = (info) => {
+        info.round++
+        const move = minimax(info, "O").index
+        info.gameboard[move] = info.player2
+        setTimeout(() => {
+            let section = document.getElementById(`${move}`)
+            section.textContent = info.player2
+            section.classList.add('player2')
+        }, 250)
+    }
+
+    const minimax = (info, player) => {
+        let availableSpace = info.gameboard.filter(
+            (space) => space !== "X" && space !== "O")
+        
+        if (checkWinner(info, info.player1)) {
+            return {score: -100,}
+        } else if (checkWinner(info, info.player2)) {
+            return {score: 100,}
+        } else if (availableSpace.length === 0) {
+            return {score: 0,}
+        }
+        
+        const availableMoves = []
+        for (let i = 0; i < availableSpace.length; i++) {
+            let move = {}
+            move.index = info.gameboard[availableSpace[i]]
+            info.gameboard[availableSpace[i]] = player
+            if (player === info.player2) {
+                move.score = minimax(info, info.player1).score
+            } else {
+                move.score = minimax(info, info.player2).score
+            }
+
+            info.gameboard[availableSpace[i]] = move.index
+            availableMoves.push(move)
+        }
+
+        let bestMove = 0
+        if (player === info.player2) {
+            let bestScore = -10000
+            for (let i = 0; i < availableMoves.length; i++) {
+                if (availableMoves[i].score > bestScore) {
+                    bestScore = availableMoves[i].score
+                    bestMove = i
+                }
+            }
+        } else {
+            let bestScore = 10000
+            for (let i = 0; i < availableMoves.length; i++) {
+                if (availableMoves[i].score < bestScore) {
+                    bestScore = availableMoves[i].score
+                    bestMove = i
+                }
+            }
+        }
+        return availableMoves[bestMove]
     }
 })();
